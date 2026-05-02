@@ -80,13 +80,17 @@ nav {
 
 nav a,
 footer a,
-.card a {
+.card a,
+.timeline a,
+.cert-badge a {
   text-decoration: none;
 }
 
 nav a:hover,
 footer a:hover,
-.card a:hover {
+.card a:hover,
+.timeline a:hover,
+.cert-badge a:hover {
   color: var(--green);
 }
 
@@ -1240,6 +1244,11 @@ p {
   text-transform: uppercase;
 }
 
+.timeline a {
+  color: var(--text);
+  font-weight: 800;
+}
+
 .article-stack a {
   display: block;
   text-decoration: none;
@@ -1266,6 +1275,173 @@ p {
   background:
     linear-gradient(135deg, rgba(77, 255, 154, 0.14), transparent 32rem),
     rgba(237, 247, 241, 0.06);
+}
+
+.resume-document-body {
+  background:
+    radial-gradient(circle at 78% 0%, rgba(84, 216, 255, 0.14), transparent 24rem),
+    radial-gradient(circle at 8% 18%, rgba(77, 255, 154, 0.12), transparent 22rem),
+    #07100d;
+}
+
+.resume-document {
+  width: min(100%, 68rem);
+  margin: 0 auto;
+  padding: 7rem clamp(1rem, 4vw, 2rem) 4rem;
+}
+
+.resume-document h1 {
+  max-width: none;
+  margin-bottom: 0.9rem;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: 0.9;
+}
+
+.resume-document h2 {
+  margin-bottom: 0.8rem;
+  font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+}
+
+.resume-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  gap: 1rem;
+  align-items: stretch;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.resume-top p {
+  max-width: 46rem;
+  font-size: 1.05rem;
+}
+
+.resume-contact-card,
+.resume-block,
+.cert-badge,
+.resume-projects article {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: rgba(237, 247, 241, 0.055);
+}
+
+.resume-contact-card {
+  display: grid;
+  align-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+}
+
+.resume-contact-card span,
+.cert-badge span,
+.resume-projects span {
+  color: var(--green);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resume-block {
+  margin-top: 1rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.resume-columns {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.18fr);
+  gap: 1rem;
+}
+
+.resume-columns .resume-block {
+  margin-top: 1rem;
+}
+
+.cert-badge {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+  background:
+    linear-gradient(135deg, rgba(84, 216, 255, 0.12), transparent),
+    rgba(237, 247, 241, 0.055);
+}
+
+.cert-badge strong {
+  font-size: 1.35rem;
+}
+
+.cert-badge small {
+  color: var(--muted);
+}
+
+.cert-badge a {
+  color: var(--text);
+  font-weight: 800;
+}
+
+.resume-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.resume-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.resume-projects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.resume-projects article {
+  padding: 1rem;
+}
+
+.resume-projects h3 {
+  margin-top: 0.45rem;
+}
+
+.pdf-viewer-page {
+  width: min(100%, 74rem);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 7rem clamp(1rem, 4vw, 2rem) 3rem;
+}
+
+.pdf-viewer-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pdf-viewer-heading h1 {
+  max-width: none;
+  margin-bottom: 0;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+}
+
+.pdf-preview {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: rgba(237, 247, 241, 0.05);
+  overflow: hidden;
+}
+
+.pdf-preview-image {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 footer {
@@ -1327,7 +1503,10 @@ footer {
   }
 
   .card-grid,
-  .timeline {
+  .timeline,
+  .resume-top,
+  .resume-columns,
+  .resume-projects {
     grid-template-columns: 1fr;
   }
 }
@@ -1363,6 +1542,42 @@ footer {
 
   .button {
     width: 100%;
+  }
+}
+
+@media print {
+  .site-header {
+    display: none;
+  }
+
+  .resume-actions {
+    display: none;
+  }
+
+  body,
+  .resume-document-body {
+    background: #fff;
+    color: #111;
+  }
+
+  .resume-document {
+    width: 100%;
+    padding: 0;
+  }
+
+  .resume-contact-card,
+  .resume-block,
+  .cert-badge,
+  .resume-projects article {
+    border-color: #ddd;
+    background: #fff;
+    box-shadow: none;
+  }
+
+  p,
+  .resume-list,
+  .cert-badge small {
+    color: #333;
   }
 }
 
