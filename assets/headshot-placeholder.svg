@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Ryan Gilmartin Headshot Placeholder</title>
+  <desc id="desc">Professional headshot placeholder with Ryan Gilmartin initials.</desc>
+  <defs>
+    <radialGradient id="bg" cx="38%" cy="22%" r="82%">
+      <stop offset="0%" stop-color="#54d8ff"/>
+      <stop offset="43%" stop-color="#173a67"/>
+      <stop offset="100%" stop-color="#07100d"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="94" y1="60" x2="560" y2="582">
+      <stop offset="0%" stop-color="#edf7f1"/>
+      <stop offset="42%" stop-color="#54d8ff"/>
+      <stop offset="100%" stop-color="#4dff9a"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" fill="#07100d"/>
+  <circle cx="320" cy="320" r="284" fill="url(#ring)" opacity="0.95"/>
+  <circle cx="320" cy="320" r="264" fill="url(#bg)"/>
+  <path d="M156 512c24-86 90-138 164-138s140 52 164 138" fill="#edf7f1" opacity="0.18"/>
+  <circle cx="320" cy="246" r="92" fill="#edf7f1" opacity="0.18"/>
+  <text x="320" y="356" text-anchor="middle" fill="#edf7f1" font-family="Inter, Arial, sans-serif" font-size="132" font-weight="800" letter-spacing="10">RG</text>
+  <path d="M132 492h376" stroke="#4dff9a" stroke-width="6" stroke-linecap="round" opacity="0.75"/>
+</svg>
