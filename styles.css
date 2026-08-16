@@ -1371,7 +1371,9 @@ p {
 
 .resume-contact-card span,
 .cert-badge span,
-.resume-projects span {
+.resume-projects span,
+.skill-grid span,
+.resume-work span {
   color: var(--green);
   font-size: 0.76rem;
   font-weight: 900;
@@ -1429,6 +1431,35 @@ p {
   margin: 0;
   padding-left: 1.1rem;
   color: var(--muted);
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.skill-grid div,
+.resume-work article {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: rgba(237, 247, 241, 0.04);
+  padding: 1rem;
+}
+
+.skill-grid span,
+.resume-work span {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.skill-grid p {
+  margin-bottom: 0;
+}
+
+.resume-work {
+  display: grid;
+  gap: 1rem;
 }
 
 .resume-projects {
@@ -1543,7 +1574,8 @@ footer {
   .timeline,
   .resume-top,
   .resume-columns,
-  .resume-projects {
+  .resume-projects,
+  .skill-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -1605,7 +1637,9 @@ footer {
   .resume-contact-card,
   .resume-block,
   .cert-badge,
-  .resume-projects article {
+  .resume-projects article,
+  .skill-grid div,
+  .resume-work article {
     border-color: #ddd;
     background: #fff;
     box-shadow: none;
