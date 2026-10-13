@@ -1204,24 +1204,10 @@ p {
   border-top-color: var(--gold);
 }
 
-.project-list,
 .article-stack,
 .resume-facts {
   display: grid;
   gap: 0.9rem;
-}
-
-.project-list article {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.project-list span {
-  color: var(--green);
-  font-weight: 900;
 }
 
 .timeline {
@@ -1351,8 +1337,7 @@ p {
 
 .resume-contact-card,
 .resume-block,
-.cert-badge,
-.resume-projects article {
+.cert-badge {
   border: 1px solid var(--line);
   border-radius: 0.5rem;
   background: rgba(237, 247, 241, 0.055);
@@ -1371,7 +1356,6 @@ p {
 
 .resume-contact-card span,
 .cert-badge span,
-.resume-projects span,
 .skill-grid span,
 .resume-work span {
   color: var(--green);
@@ -1460,20 +1444,6 @@ p {
 .resume-work {
   display: grid;
   gap: 1rem;
-}
-
-.resume-projects {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.resume-projects article {
-  padding: 1rem;
-}
-
-.resume-projects h3 {
-  margin-top: 0.45rem;
 }
 
 .pdf-viewer-page {
@@ -1574,7 +1544,6 @@ footer {
   .timeline,
   .resume-top,
   .resume-columns,
-  .resume-projects,
   .skill-grid {
     grid-template-columns: 1fr;
   }
@@ -1637,7 +1606,6 @@ footer {
   .resume-contact-card,
   .resume-block,
   .cert-badge,
-  .resume-projects article,
   .skill-grid div,
   .resume-work article {
     border-color: #ddd;
