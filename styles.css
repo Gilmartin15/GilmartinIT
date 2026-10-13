@@ -1169,6 +1169,10 @@ p {
   gap: 1rem;
 }
 
+.featured-work-grid {
+  grid-template-columns: minmax(0, 48rem);
+}
+
 .card,
 .timeline article,
 .article-stack a,
