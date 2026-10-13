@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Corporate Active Directory Lab | Ryan Gilmartin</title>
+    <meta
+      name="description"
+      content="Ryan Gilmartin's corporate Active Directory lab using Azure, Windows Server, VMware Fusion, WireGuard, DNS, and PowerShell."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="project-document-body">
+    <header class="site-header" aria-label="Project navigation">
+      <a class="brand" href="index.html" aria-label="Back to portfolio">
+        <span class="brand-mark"></span>
+        <span>Ryan Gilmartin</span>
+      </a>
+      <nav>
+        <a href="index.html#technical-work">Technical Work</a>
+        <a href="index.html#achievements">Achievements</a>
+        <a href="resume-pdf.html">Resume</a>
+        <a href="mailto:gilmartin15@gmail.com">Contact</a>
+      </nav>
+    </header>
+
+    <main class="project-document">
+      <section class="project-hero">
+        <p class="eyebrow">Technical Work</p>
+        <h1>Corporate Active Directory Lab</h1>
+        <p>
+          A small corporate Active Directory environment built to simulate the
+          infrastructure I could encounter in a help desk or junior systems
+          administration role. The lab connects an Azure-hosted Windows Server
+          domain controller to a local VMware Fusion Windows 11 workstation
+          through WireGuard.
+        </p>
+        <div class="project-actions">
+          <a class="button primary" href="index.html#technical-work">Back to Technical Work</a>
+          <a class="button secondary" href="resume-pdf.html">View Resume</a>
+        </div>
+      </section>
+
+      <section class="project-summary-grid" aria-label="Project summary">
+        <article>
+          <span>Environment</span>
+          <strong>Azure DC01 and VMware CLIENT01</strong>
+          <p>Cloud-hosted domain controller connected to a local virtual workstation.</p>
+        </article>
+        <article>
+          <span>Domain</span>
+          <strong>corp.gilmartintech.test</strong>
+          <p>Fictional company domain with users, computers, OUs, and groups.</p>
+        </article>
+        <article>
+          <span>Scale</span>
+          <strong>About 25 users</strong>
+          <p>Manual account creation followed by PowerShell-based bulk provisioning.</p>
+        </article>
+        <article>
+          <span>Outcome</span>
+          <strong>Domain login over VPN</strong>
+          <p>CLIENT01 joined the domain and authenticated with a CORP user account.</p>
+        </article>
+      </section>
+
+      <section class="project-layout">
+        <aside class="project-sidebar" aria-label="Technologies used">
+          <h2>Technologies Used</h2>
+          <div class="tag-list">
+            <span>Microsoft Azure</span>
+            <span>Windows Server 2025</span>
+            <span>Active Directory DS</span>
+            <span>DNS</span>
+            <span>VMware Fusion</span>
+            <span>Windows 11</span>
+            <span>WireGuard VPN</span>
+            <span>PowerShell</span>
+            <span>Command Prompt</span>
+            <span>Azure Virtual Networks</span>
+            <span>Azure NSGs</span>
+          </div>
+        </aside>
+
+        <article class="project-content">
+          <section class="project-block">
+            <h2>Project Overview</h2>
+            <p>
+              I built a small corporate Active Directory environment designed
+              around real IT support and systems administration tasks. The lab
+              consists of a Windows Server domain controller hosted in Microsoft
+              Azure and a Windows 11 client computer running locally in VMware
+              Fusion.
+            </p>
+            <p>
+              Because the two systems were running on completely separate
+              networks, I configured a WireGuard VPN tunnel between them so the
+              local virtual machine could securely communicate with the Azure
+              environment. Once connectivity was established, I configured
+              Active Directory, DNS, organizational units, security groups, user
+              accounts, and joined the VMware workstation to the domain.
+            </p>
+          </section>
+
+          <section class="project-block">
+            <h2>Environment</h2>
+            <p>
+              I created a fictional company environment using the domain
+              <code>corp.gilmartintech.test</code>. The Azure-hosted domain
+              controller was configured as <code>DC01</code>, and the local
+              VMware workstation was configured as <code>CLIENT01</code>.
+            </p>
+            <p>
+              I created organizational units to separate employees and computers
+              by purpose and department, including IT, Sales, Operations,
+              Finance, and HR. I also created corresponding Active Directory
+              security groups so users could be assigned permissions by
+              department instead of managing permissions individually.
+            </p>
+          </section>
+
+          <section class="project-block">
+            <h2>Building the Azure Domain Controller</h2>
+            <p>
+              I deployed a Windows Server virtual machine in Microsoft Azure and
+              configured it as the primary domain controller for the lab. The
+              server was given a private Azure network address and configured
+              with the Active Directory Domain Services and DNS Server roles.
+            </p>
+            <p>
+              I then promoted the server to a domain controller and created the
+              new Active Directory forest <code>corp.gilmartintech.test</code>.
+              After the domain was operational, I used Active Directory Users
+              and Computers to build the organizational structure for the
+              simulated company.
+            </p>
+          </section>
+
+          <section class="project-block">
+            <h2>Creating Users and Groups</h2>
+            <p>
+              One of my goals was to practice both traditional GUI-based
+              administration and PowerShell automation. I initially created
+              several employee accounts manually using Active Directory Users and
+              Computers so I could understand the individual steps involved in
+              creating accounts, assigning users to organizational units, and
+              managing group membership.
+            </p>
+            <p>
+              After becoming comfortable with the manual process, I used
+              PowerShell to automate the creation of roughly 20 additional
+              employee accounts. Users were assigned to department-specific
+              groups such as <code>GG_IT</code>, <code>GG_Sales</code>,
+              <code>GG_Operations</code>, <code>GG_Finance</code>, and
+              <code>GG_HR</code>.
+            </p>
+            <div class="command-list" aria-label="PowerShell commands practiced">
+              <code>New-ADUser</code>
+              <code>Add-ADGroupMember</code>
+              <code>Get-ADUser</code>
+              <code>Get-ADGroupMember</code>
+            </div>
+            <p>
+              I verified group membership through both PowerShell and Active
+              Directory Users and Computers. This part of the project
+              demonstrated how scripting can make repetitive administrative work
+              significantly faster and more consistent.
+            </p>
+          </section>
+
+          <section class="project-block">
+            <h2>Connecting Azure to VMware</h2>
+            <p>
+              One of the more challenging parts of the project was connecting
+              the Azure environment to my locally hosted Windows 11 virtual
+              machine. DC01 existed inside an Azure virtual network, while
+              CLIENT01 was running inside VMware Fusion on my local computer.
+            </p>
+            <p>
+              To securely connect the two environments, I configured a
+              site-to-client style WireGuard VPN connection. I assigned
+              WireGuard tunnel addresses of <code>10.200.0.1</code> for DC01
+              and <code>10.200.0.2</code> for CLIENT01. I also configured Azure
+              Network Security Group rules to allow the WireGuard UDP traffic
+              while restricting access appropriately.
+            </p>
+          </section>
+
+          <section class="project-block">
+            <h2>Troubleshooting the VPN Connection</h2>
+            <p>
+              The WireGuard configuration required significant troubleshooting.
+              Initially, CLIENT01 was sending traffic but receiving no response.
+              I used several tools to identify where communication was failing.
+            </p>
+            <div class="command-list" aria-label="Troubleshooting tools used">
+              <code>ping</code>
+              <code>nslookup</code>
+              <code>ipconfig</code>
+              <code>nltest</code>
+              <code>Test-NetConnection</code>
+              <code>Get-NetUDPEndpoint</code>
+              <code>pktmon</code>
+              <code>WireGuard logs</code>
+            </div>
+            <p>
+              Using Windows Packet Monitor, I confirmed that WireGuard packets
+              from my local network were successfully reaching the Azure server.
+              WireGuard logs then showed <code>Invalid MAC of handshake</code>,
+              which narrowed the problem down to the WireGuard peer
+              configuration rather than Azure networking or Windows Firewall.
+            </p>
+            <p>
+              I compared the active WireGuard public keys on both systems and
+              corrected the peer configuration. Once the keys matched properly,
+              the tunnel successfully completed its handshake and began
+              transferring traffic in both directions.
+            </p>
+          </section>
+
+          <section class="project-block">
+            <h2>Configuring Active Directory DNS</h2>
+            <p>
+              After establishing the VPN, I encountered another issue when
+              attempting to locate the domain controller. DNS queries initially
+              pointed CLIENT01 toward the Azure-only address of the domain
+              controller, <code>172.16.0.4</code>. CLIENT01 could not directly
+              reach that address through the local VMware network.
+            </p>
+            <p>
+              I configured DNS so the domain controller could also be reached
+              through its WireGuard address, <code>10.200.0.1</code>. I then
+              verified Active Directory DNS records and the LDAP service record.
+            </p>
+            <div class="command-list" aria-label="DNS verification commands">
+              <code>nslookup dc01.corp.gilmartintech.test</code>
+              <code>nslookup -type=SRV _ldap._tcp.dc._msdcs.corp.gilmartintech.test</code>
+              <code>nltest /dsgetdc:corp.gilmartintech.test /force</code>
+            </div>
+            <p>
+              The final domain controller test successfully located
+              <code>\\DC01.corp.gilmartintech.test</code>.
+            </p>
+          </section>
+
+          <section class="project-block">
+            <h2>Joining CLIENT01 to the Domain</h2>
+            <p>
+              After networking and DNS were working correctly, I joined the
+              VMware Windows 11 workstation to <code>corp.gilmartintech.test</code>.
+              I restarted CLIENT01 and logged into Windows using one of the
+              Active Directory employee accounts instead of the local Windows
+              account.
+            </p>
+            <p>
+              To verify successful authentication, I ran <code>whoami</code>,
+              which returned <code>corp\amorgan</code>. This confirmed that the
+              workstation was successfully joined to the domain and that Active
+              Directory authentication was functioning across the WireGuard VPN
+              connection.
+            </p>
+          </section>
+
+          <section class="project-block">
+            <h2>What I Learned</h2>
+            <ul class="project-list">
+              <li>Deploying and managing a Windows Server VM in Azure.</li>
+              <li>Installing and configuring Active Directory Domain Services.</li>
+              <li>Configuring Active Directory-integrated DNS.</li>
+              <li>Creating organizational units and security groups.</li>
+              <li>Provisioning users manually and through PowerShell automation.</li>
+              <li>Managing group membership with PowerShell.</li>
+              <li>Configuring Azure Virtual Networks and Network Security Groups.</li>
+              <li>Building a WireGuard VPN between Azure and a local VMware environment.</li>
+              <li>Troubleshooting VPN handshakes, routing, DNS, and firewall behavior.</li>
+              <li>Using packet captures to troubleshoot network traffic.</li>
+              <li>Joining Windows workstations to an Active Directory domain.</li>
+              <li>Authenticating Windows users with domain credentials.</li>
+            </ul>
+          </section>
+
+          <section class="project-block final-result">
+            <h2>Final Result</h2>
+            <p>
+              The finished lab functions as a small corporate Windows
+              environment with approximately 25 employee accounts organized
+              across multiple departments and security groups. It combines
+              manually created accounts with accounts provisioned through
+              PowerShell automation.
+            </p>
+            <pre class="network-diagram"><code>Microsoft Azure
+  |
+  Windows Server DC01
+  |
+  Active Directory + DNS
+  |
+  WireGuard VPN
+  |
+  Encrypted Tunnel
+  |
+  VMware Fusion
+  |
+  CLIENT01
+  |
+  Windows 11 Domain PC
+  |
+  CORP Domain Users</code></pre>
+            <p>
+              The project gave me experience not only building a working Active
+              Directory environment, but also diagnosing and resolving the
+              networking, authentication, VPN, and DNS problems that occurred
+              while connecting a cloud-hosted domain controller to a locally
+              virtualized workstation.
+            </p>
+          </section>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <span>Ryan Gilmartin</span>
+      <span>Corporate Active Directory Lab</span>
+      <a href="mailto:gilmartin15@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/ryan-gilmartin-147a14136">LinkedIn</a>
+      <a href="index.html#top">Back to portfolio</a>
+    </footer>
+  </body>
+</html>

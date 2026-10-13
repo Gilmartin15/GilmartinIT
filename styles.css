@@ -1192,6 +1192,13 @@ p {
   font-weight: 800;
 }
 
+.card-tags {
+  margin: 0 0 1.1rem;
+  color: var(--cyan);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
 .accent-green {
   border-top-color: var(--green);
 }
@@ -1446,6 +1453,172 @@ p {
   gap: 1rem;
 }
 
+.project-document-body {
+  background:
+    radial-gradient(circle at 80% 0%, rgba(84, 216, 255, 0.14), transparent 24rem),
+    radial-gradient(circle at 8% 16%, rgba(77, 255, 154, 0.13), transparent 24rem),
+    #07100d;
+}
+
+.project-document {
+  width: min(100%, 74rem);
+  margin: 0 auto;
+  padding: 7rem clamp(1rem, 4vw, 2rem) 4rem;
+}
+
+.project-hero {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-hero h1 {
+  max-width: 13ch;
+  font-size: clamp(3rem, 7vw, 6.4rem);
+  line-height: 0.94;
+}
+
+.project-hero p {
+  max-width: 62rem;
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.project-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.project-summary-grid article,
+.project-sidebar,
+.project-block {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: rgba(237, 247, 241, 0.055);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.18);
+}
+
+.project-summary-grid article {
+  padding: 1rem;
+}
+
+.project-summary-grid span,
+.project-sidebar h2 {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--green);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-summary-grid strong {
+  display: block;
+  margin-bottom: 0.45rem;
+}
+
+.project-summary-grid p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.project-layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.34fr) minmax(0, 0.66fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.project-sidebar {
+  position: sticky;
+  top: 5.5rem;
+  padding: 1rem;
+}
+
+.project-sidebar h2 {
+  font-size: 0.76rem;
+}
+
+.tag-list,
+.command-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-list span,
+.command-list code,
+.project-block code {
+  border: 1px solid rgba(84, 216, 255, 0.2);
+  border-radius: 0.35rem;
+  background: rgba(84, 216, 255, 0.08);
+  color: var(--text);
+}
+
+.tag-list span,
+.command-list code {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.project-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.project-block {
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.project-block h2 {
+  font-size: clamp(1.45rem, 2.5vw, 2.2rem);
+}
+
+.project-block code {
+  padding: 0.12rem 0.3rem;
+  font-size: 0.92em;
+}
+
+.command-list {
+  margin: 0.8rem 0 1rem;
+}
+
+.project-list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.network-diagram {
+  margin: 1rem 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border: 1px solid rgba(77, 255, 154, 0.22);
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.24);
+  color: var(--green);
+  line-height: 1.45;
+}
+
+.network-diagram code {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
 .pdf-viewer-page {
   width: min(100%, 74rem);
   min-height: 100vh;
@@ -1501,7 +1674,8 @@ footer {
   .scene-sticky,
   .content-grid,
   .split-section,
-  .resume-panel {
+  .resume-panel,
+  .project-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1542,10 +1716,15 @@ footer {
 
   .card-grid,
   .timeline,
+  .project-summary-grid,
   .resume-top,
   .resume-columns,
   .skill-grid {
     grid-template-columns: 1fr;
+  }
+
+  .project-sidebar {
+    position: static;
   }
 }
 
@@ -1581,6 +1760,10 @@ footer {
   .button {
     width: 100%;
   }
+
+  .project-hero h1 {
+    max-width: none;
+  }
 }
 
 @media print {
@@ -1606,6 +1789,9 @@ footer {
   .resume-contact-card,
   .resume-block,
   .cert-badge,
+  .project-summary-grid article,
+  .project-sidebar,
+  .project-block,
   .skill-grid div,
   .resume-work article {
     border-color: #ddd;
